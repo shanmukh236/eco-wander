@@ -28,7 +28,7 @@ export function Navbar() {
               <Leaf className="w-5 h-5 text-primary-foreground animate-leaf-sway" />
             </div>
             <span className="font-serif text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
-              EcoWander
+              EcoPath
             </span>
           </a>
 

@@ -196,7 +196,7 @@ export function RewardsSection() {
             <div className="mt-6 p-4 rounded-xl bg-muted border border-border">
               <p className="text-sm text-muted-foreground">
                 <span className="font-medium text-foreground">Note:</span>{" "}
-                Rewards are non-transferable and linked to your EcoWander
+                Rewards are non-transferable and linked to your EcoPath
                 account. Coupons can only be redeemed by the account holder.
               </p>
             </div>

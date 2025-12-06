@@ -32,13 +32,13 @@ export function Footer() {
               <div className="w-10 h-10 rounded-full bg-primary-foreground/20 flex items-center justify-center">
                 <Leaf className="w-5 h-5" />
               </div>
-              <span className="font-serif text-xl font-semibold">
-                EcoWander
-              </span>
+            <span className="font-serif text-xl font-semibold">
+              EcoPath
+            </span>
             </a>
             <p className="text-primary-foreground/70 mb-6 max-w-sm">
               Empowering travelers to explore the world sustainably. Every
-              journey matters, make yours count for the planet.
+              path you take matters for the planet.
             </p>
             <div className="space-y-3">
               <a
@@ -108,7 +108,7 @@ export function Footer() {
         {/* Bottom */}
         <div className="mt-12 pt-8 border-t border-primary-foreground/20 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-primary-foreground/60 text-sm">
-            © 2024 EcoWander. Travel with Nature.
+            © 2024 EcoPath. Travel with Nature.
           </p>
           <div className="flex gap-6 text-sm">
             <a
