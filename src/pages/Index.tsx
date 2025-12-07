@@ -2,7 +2,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { DestinationsSection } from "@/components/sections/DestinationsSection";
-import { TripPlannerSection } from "@/components/sections/TripPlannerSection";
+import SmartTripPlanner from "@/components/sections/SmartTripPlanner";
 import { RewardsSection } from "@/components/sections/RewardsSection";
 import { AlertsSection } from "@/components/sections/AlertsSection";
 import { CommunitySection } from "@/components/sections/CommunitySection";
@@ -14,7 +14,7 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <DestinationsSection />
-      <TripPlannerSection />
+      <SmartTripPlanner />
       <AlertsSection />
       <RewardsSection />
       <ARVRSection />

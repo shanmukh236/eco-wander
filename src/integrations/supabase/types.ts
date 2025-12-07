@@ -14,7 +14,170 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      eco_missions: {
+        Row: {
+          completed_at: string | null
+          description: string | null
+          id: string
+          mission_type: string
+          points_earned: number | null
+          title: string
+          trip_id: string | null
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string | null
+          description?: string | null
+          id?: string
+          mission_type: string
+          points_earned?: number | null
+          title: string
+          trip_id?: string | null
+          user_id: string
+        }
+        Update: {
+          completed_at?: string | null
+          description?: string | null
+          id?: string
+          mission_type?: string
+          points_earned?: number | null
+          title?: string
+          trip_id?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "eco_missions_trip_id_fkey"
+            columns: ["trip_id"]
+            isOneToOne: false
+            referencedRelation: "trips"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string | null
+          eco_points: number | null
+          full_name: string | null
+          id: string
+          total_trips: number | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string | null
+          eco_points?: number | null
+          full_name?: string | null
+          id?: string
+          total_trips?: number | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string | null
+          eco_points?: number | null
+          full_name?: string | null
+          id?: string
+          total_trips?: number | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      rewards: {
+        Row: {
+          coupon_code: string
+          created_at: string | null
+          description: string | null
+          expires_at: string | null
+          id: string
+          is_redeemed: boolean | null
+          points_cost: number
+          redeemed_at: string | null
+          title: string
+          user_id: string
+        }
+        Insert: {
+          coupon_code: string
+          created_at?: string | null
+          description?: string | null
+          expires_at?: string | null
+          id?: string
+          is_redeemed?: boolean | null
+          points_cost: number
+          redeemed_at?: string | null
+          title: string
+          user_id: string
+        }
+        Update: {
+          coupon_code?: string
+          created_at?: string | null
+          description?: string | null
+          expires_at?: string | null
+          id?: string
+          is_redeemed?: boolean | null
+          points_cost?: number
+          redeemed_at?: string | null
+          title?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      trips: {
+        Row: {
+          budget_range: string | null
+          created_at: string | null
+          distance_km: number | null
+          eco_score: number | null
+          from_location: string
+          id: string
+          status: string | null
+          to_location: string
+          transport_mode: string | null
+          travel_date: string | null
+          travel_plan: Json | null
+          updated_at: string | null
+          user_id: string
+          waypoints: Json | null
+        }
+        Insert: {
+          budget_range?: string | null
+          created_at?: string | null
+          distance_km?: number | null
+          eco_score?: number | null
+          from_location: string
+          id?: string
+          status?: string | null
+          to_location: string
+          transport_mode?: string | null
+          travel_date?: string | null
+          travel_plan?: Json | null
+          updated_at?: string | null
+          user_id: string
+          waypoints?: Json | null
+        }
+        Update: {
+          budget_range?: string | null
+          created_at?: string | null
+          distance_km?: number | null
+          eco_score?: number | null
+          from_location?: string
+          id?: string
+          status?: string | null
+          to_location?: string
+          transport_mode?: string | null
+          travel_date?: string | null
+          travel_plan?: Json | null
+          updated_at?: string | null
+          user_id?: string
+          waypoints?: Json | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

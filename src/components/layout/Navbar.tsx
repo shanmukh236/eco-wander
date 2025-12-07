@@ -1,17 +1,26 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Leaf, Menu, X } from "lucide-react";
+import { Leaf, Menu, X, LogOut, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const navLinks = [
   { href: "#explore", label: "Explore" },
-  { href: "#plan", label: "Plan Trip" },
+  { href: "#trip-planner", label: "Plan Trip" },
   { href: "#rewards", label: "Eco-Rewards" },
   { href: "#community", label: "Community" },
 ];
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, signOut, loading } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate('/');
+  };
 
   return (
     <motion.nav
@@ -23,7 +32,7 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
+          <a href="/" className="flex items-center gap-2 group">
             <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
               <Leaf className="w-5 h-5 text-primary-foreground animate-leaf-sway" />
             </div>
@@ -47,12 +56,31 @@ export function Navbar() {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="ghost" size="sm">
-              Sign In
-            </Button>
-            <Button size="sm">
-              Start Journey
-            </Button>
+            {!loading && (
+              <>
+                {user ? (
+                  <>
+                    <span className="text-sm text-muted-foreground flex items-center gap-2">
+                      <User className="h-4 w-4" />
+                      {user.email?.split('@')[0]}
+                    </span>
+                    <Button variant="ghost" size="sm" onClick={handleSignOut}>
+                      <LogOut className="h-4 w-4 mr-2" />
+                      Sign Out
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Button variant="ghost" size="sm" onClick={() => navigate('/auth')}>
+                      Sign In
+                    </Button>
+                    <Button size="sm" onClick={() => navigate('/auth')}>
+                      Start Journey
+                    </Button>
+                  </>
+                )}
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -86,12 +114,27 @@ export function Navbar() {
                 </a>
               ))}
               <div className="flex flex-col gap-2 pt-4 border-t border-border">
-                <Button variant="ghost" className="justify-start">
-                  Sign In
-                </Button>
-                <Button className="w-full">
-                  Start Journey
-                </Button>
+                {user ? (
+                  <>
+                    <span className="text-sm text-muted-foreground flex items-center gap-2 py-2">
+                      <User className="h-4 w-4" />
+                      {user.email?.split('@')[0]}
+                    </span>
+                    <Button variant="ghost" className="justify-start" onClick={handleSignOut}>
+                      <LogOut className="h-4 w-4 mr-2" />
+                      Sign Out
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Button variant="ghost" className="justify-start" onClick={() => navigate('/auth')}>
+                      Sign In
+                    </Button>
+                    <Button className="w-full" onClick={() => navigate('/auth')}>
+                      Start Journey
+                    </Button>
+                  </>
+                )}
               </div>
             </div>
           </motion.div>
